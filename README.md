@@ -18,3 +18,16 @@ $ sudo docker run -it --name ubuntu-nginx ubuntu:22.04
 root@b0b2267cfe02:/# apt update
 root@b0b2267cfe02:/# apt install nginx
 ```
+
+### 3. Dockerfile 생성
+```
+from ubuntu:22.04
+RUN apt update 
+RUN apt install -y nginx
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+### 4. 컨테이너 생성
+```
+$ docker run --name ubuntu-nginx -p 8001:80 ubuntu-nginx:0.1.0
+```
